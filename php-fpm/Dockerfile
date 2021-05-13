@@ -72,3 +72,5 @@ COPY ./conf/php.ini /usr/local/etc/php/conf.d/php.ini
 RUN mkdir -p ${WORKDIR}
 
 WORKDIR ${WORKDIR}
+
+CMD [ "php" ,"/usr/local/bin/composer","install"]
