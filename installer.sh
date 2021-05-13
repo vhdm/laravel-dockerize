@@ -1,4 +1,3 @@
-#!/bash/bin
 RESET="\033[0m"
 BOLD="\033[1m"
 READ_NORMAL_COLOR="\033[38;5;31m"
