@@ -93,6 +93,15 @@ echo '
                                                                    
 '
 sleep 2
+
+if (whoami != root)
+  error "Please run as root"
+  warning "Byebye..."
+  exit
+fi
+
+
+
 if ping -q -c 1 -W 1 google.com >/dev/null; then
   read -p "$(echo -e $BOLD$READ_NORMAL_COLOR">> Enter a valid IP Address or leave entry blank["$IP_ADDRESS"]: "$RESET)" IP_ADDRESS
   if [ "$IP_ADDRESS" = "" ]; then
