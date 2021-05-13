@@ -22,7 +22,7 @@ RUN apt-get update && apt-get install -y --no-install-recommends \
 RUN docker-php-ext-install pdo pdo_mysql mysqli
 
 # Install PHP intl module
-RUN apt-get update && apt-get install -y libicu-dev \
+RUN apt-get update && apt-get install -y libonig-dev libicu-dev \
 	&& docker-php-ext-configure intl \
 	&& docker-php-ext-install intl
 
