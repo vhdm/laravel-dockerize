@@ -94,7 +94,7 @@ echo '
 '
 sleep 2
 
-if [ "$EUID" -ne 0 ] then
+if [ "$EUID" -ne 0 ]; then
   error "Please run as root"
   warning "Byebye..."
   exit
