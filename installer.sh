@@ -202,8 +202,7 @@ if ping -q -c 1 -W 1 google.com >/dev/null; then
   sleep 2
   warning "docker-compose up ..."
   sleep 2
-  sudo docker-compose --env-file "$LARAVEL_DIRECTORY"/.env up 
-  sudo docker exec vhdm_laravel_php_fpm composer install
+  sudo docker-compose --env-file "$LARAVEL_DIRECTORY"/.env up --build -d 
 else
   error "The network is down or very slow!"
 fi

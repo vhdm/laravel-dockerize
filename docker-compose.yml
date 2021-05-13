@@ -55,7 +55,11 @@ services:
         networks: 
             - vhdm_network
 
-
+    composer:
+        image: composer:latest
+        command: ["composer", "install"]
+        volumes:
+            - "./laravel:/app"
 networks: 
     vhdm_network:
         name: vhdm_network
