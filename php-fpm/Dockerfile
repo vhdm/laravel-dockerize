@@ -23,12 +23,12 @@ RUN apt-get update && apt-get install -y --no-install-recommends \
 RUN docker-php-ext-install pdo pdo_mysql mysqli
 
 # Install PHP intl module
-RUN apt-get update && apt-get install -y libonig-dev libicu-dev \
+RUN apt-get update && apt-get install -y --no-install-recommends apt-utils libonig-dev libicu-dev \
 	&& docker-php-ext-configure intl \
 	&& docker-php-ext-install intl
 
 # Install PHP Image module and libraries
-RUN apt-get update && apt-get install -y \
+RUN apt-get update && apt-get install -y  \
 	libfreetype6-dev libjpeg62-turbo-dev libpng-dev libgd-dev \
 	&& docker-php-ext-configure gd --with-freetype=/usr/include/ --with-jpeg=/usr/include/ \
 	&& docker-php-ext-install gd \

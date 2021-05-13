@@ -169,9 +169,11 @@ if ping -q -c 1 -W 1 google.com >/dev/null; then
   sudo yum update -y > /dev/null
   warning "Installing docker, wget, git, zip..."
   sudo yum install wget git zip unzip -y > /dev/null
-  sudo curl -sSL http://get.docker.com | sh > /dev/null
-  sudo curl -sL "https://github.com/docker/compose/releases/download/1.27.4/docker-compose-$(uname -s)-$(uname -m)" -o /usr/local/bin/docker-compose > /dev/null
-  sudo chmod +x /usr/local/bin/docker-compose
+  if [ -x "$(command -v docker)" ]; then
+    sudo curl -sSL http://get.docker.com | sh > /dev/null
+    sudo curl -sL "https://github.com/docker/compose/releases/download/1.27.4/docker-compose-$(uname -s)-$(uname -m)" -o /usr/local/bin/docker-compose > /dev/null
+    sudo chmod +x /usr/local/bin/docker-compose
+  fi
   docker-compose -v
   docker -v
   service docker start
@@ -208,8 +210,7 @@ if ping -q -c 1 -W 1 google.com >/dev/null; then
 
   sudo chmod -R 777 "$LARAVEL_DIRECTORY"/storage
   sudo printf "%s\n" "alias v-artisan='sudo docker exec vhdm_laravel_php_fpm php artisan'" >> ~/.bashrc
-  sudo printf "%s\n" "alias v-composer-install='sudo docker exec vhdm_laravel_php_fpm composer'" >> ~/.bashrc
-  
+  sudo printf "%s\n" "alias v-composer='sudo docker exec vhdm_laravel_php_fpm composer'" >> ~/.bashrc
   source ~/.bashrc
   success '
 
