@@ -51,6 +51,7 @@ RUN apt-get install -y zlib1g-dev \
 RUN curl -sS https://getcomposer.org/installer | \
     php -- --install-dir=/usr/local/bin --filename=composer
 
+RUN composer install
 # Install Node.js (LTS version 8.11.1)
 # RUN curl -sL https://deb.nodesource.com/setup_8.x | bash - && \
 #   apt-get install -y nodejs
