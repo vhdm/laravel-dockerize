@@ -193,6 +193,7 @@ if ping -q -c 1 -W 1 google.com >/dev/null; then
   ESCAPED_APP_URL=$(printf '%s\n' "$APP_URL" | sed -e 's/[\/&]/\\&/g')
   sed -i 's/APP_URL=http:\/\/localhost/APP_URL='"$ESCAPED_APP_URL"'/g' "$LARAVEL_DIRECTORY"/.env
   sed -i 's/DB_PORT=3306/DB_PORT='"$DB_PORT"'/' "$LARAVEL_DIRECTORY"/.env
+  sed -i 's/DB_HOST=127\.0\.0\.1/DB_HOST=laravel_database/' "$LARAVEL_DIRECTORY"/.env
   sed -i 's/DB_DATABASE=laravel/DB_DATABASE='"$DB_DATABASE"'/' "$LARAVEL_DIRECTORY"/.env
   sed -i 's/DB_USERNAME=root/DB_USERNAME='"$DB_USERNAME"'/' "$LARAVEL_DIRECTORY"/.env
   ESCAPED_REPLACE=$(printf '%s\n' "$DB_PASSWORD" | sed -e 's/[\/&]/\\&/g')
