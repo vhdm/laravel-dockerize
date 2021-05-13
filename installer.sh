@@ -202,7 +202,7 @@ if ping -q -c 1 -W 1 google.com >/dev/null; then
   sleep 2
   warning "docker-compose up ..."
   sleep 2
-  docker-compose --env-file "$LARAVEL_DIRECTORY"/.env up 
+  sudo docker-compose --env-file "$LARAVEL_DIRECTORY"/.env up 
 else
   error "The network is down or very slow!"
 fi
