@@ -58,3 +58,10 @@ services:
             test: ["CMD", "mysqladmin", "ping"]
         networks: 
             - vhdm_network
+
+
+networks: 
+    vhdm_network:
+        name: vhdm_network
+        driver: bridge  
+              
