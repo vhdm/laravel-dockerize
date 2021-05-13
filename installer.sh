@@ -154,8 +154,11 @@ if ping -q -c 1 -W 1 google.com >/dev/null; then
     DB_PASSWORD="$INP_DB_PASSWORD"
   fi
   success "<< $DB_PASSWORD"
+  sleep 2
+  clear
+  warning "Updating..."
   sudo yum update -y > /dev/null
-  information "Installing docker, wget, git, zip..."
+  warning "Installing docker, wget, git, zip..."
   sudo yum install wget git zip unzip -y > /dev/null
   sudo curl -sSL http://get.docker.com | sh > /dev/null
   sudo curl -sL "https://github.com/docker/compose/releases/download/1.27.4/docker-compose-$(uname -s)-$(uname -m)" -o /usr/local/bin/docker-compose > /dev/null
@@ -171,6 +174,7 @@ if ping -q -c 1 -W 1 google.com >/dev/null; then
     fi
     mv "$LARAVEL_DIRECTORY" "$OLD_LARAVEL_DIRECTORY"
   fi
+  warning "Downloading laravel-$LARAVEL_VERSION_NO..."
   curl -sL https://github.com/laravel/laravel/archive/v${LARAVEL_VERSION_NO}.tar.gz | tar xz >> /dev/null
   mv "laravel-${LARAVEL_VERSION_NO}" "$LARAVEL_DIRECTORY"
   cp "$LARAVEL_DIRECTORY"/.env.example "$LARAVEL_DIRECTORY"/.env
@@ -185,7 +189,10 @@ if ping -q -c 1 -W 1 google.com >/dev/null; then
   ESCAPED_POROTOCL_URL=$(echo "$APP_URL" | awk -F[/:] '{print $4}')
   sed -i 's/vhdm\.laravel/'"$ESCAPED_POROTOCL_URL"'/g' ./nginx/conf/nginx-vhost.conf
   sed -i 's/listen 80/listen '"$HTTP_PORT"'/' ./nginx/conf/nginx-vhost.conf
-  success "docker-compose up ..."
+  clear
+  sleep 2
+  warning "docker-compose up ..."
+  sleep 2
   docker-compose --env-file "$LARAVEL_DIRECTORY"/.env up 
 else
   error "The network is down or very slow!"
