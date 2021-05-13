@@ -204,6 +204,7 @@ if ping -q -c 1 -W 1 google.com >/dev/null; then
   sleep 2
 
   sudo docker-compose --env-file "$LARAVEL_DIRECTORY"/.env up --build -d 
+  sudo chmod -R 777 "$LARAVEL_DIRECTORY"/storage
   sudo docker exec vhdm_laravel_php_fpm php artisan key:generate
   sudo docker exec vhdm_laravel_php_fpm php artisan --version
   sudo docker exec vhdm_laravel_php_fpm composer dump-autoload
