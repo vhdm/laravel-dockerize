@@ -10,8 +10,6 @@ services:
             - "./laravel:/var/www/laravel"
         links:
             - "laravel_database"
-        ports:
-            - "${PHP_FPM_PORT:-9000}:9000"
         depends_on:
             - "laravel_database"
         environment:

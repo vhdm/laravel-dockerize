@@ -59,10 +59,8 @@ RUN curl -sS https://getcomposer.org/installer | \
 
 # Set your timezone here
 RUN rm /etc/localtime
-RUN ln -s /usr/share/zoneinfo/Australia/Brisbane /etc/localtime
+RUN ln -s /usr/share/zoneinfo/Asia/Tehran /etc/localtime
 RUN "date"
-
-# Clean
 RUN apt-get clean
 RUN rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/* /var/cache/*
 COPY ./conf/xdebug.ini /usr/local/etc/php/conf.d/xdebug.ini
