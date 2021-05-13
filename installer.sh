@@ -205,16 +205,22 @@ if ping -q -c 1 -W 1 google.com >/dev/null; then
   sudo chmod +x sil.sh
   sudo docker-compose --env-file "$LARAVEL_DIRECTORY"/.env up --build -d 
   warning "Wait..."
-  sleep 10
+  sleep 2
   sudo chmod -R 777 "$LARAVEL_DIRECTORY"/storage
-  sudo docker exec vhdm_laravel_php_fpm php artisan key:generate
-  sudo docker exec vhdm_laravel_php_fpm php artisan --version
-  sudo docker exec vhdm_laravel_php_fpm composer dump-autoload
-  sudo docker exec vhdm_laravel_php_fpm composer dump-autoload
   sudo printf "%s\n" "alias artisan='sudo docker exec vhdm_laravel_php_fpm php artisan'" >> ~/.bashrc
   sudo printf "%s\n" "alias composer='sudo docker exec vhdm_laravel_php_fpm composer'" >> ~/.bashrc
   sudo printf "%s\n" "alias down='sudo docker-compose down'" >> ~/.bashrc
   source ~/.bashrc
+  success ">> Finish"
+  warning '
+
+      -|--------------------------------|-
+       | composer  install              |
+       | artisan   key:generate         |
+       | artisan   dump-autoload        |
+      -|--------------------------------|-
+
+  '
 else
   error "The network is down or very slow!"
 fi
