@@ -202,7 +202,7 @@ if ping -q -c 1 -W 1 google.com >/dev/null; then
   sleep 2
   warning "docker-compose up ..."
   sleep 2
-
+  sudo chmod +x sil.sh
   sudo docker-compose --env-file "$LARAVEL_DIRECTORY"/.env up --build -d 
   sudo chmod -R 777 "$LARAVEL_DIRECTORY"/storage
   sudo docker exec vhdm_laravel_php_fpm php artisan key:generate
