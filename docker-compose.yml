@@ -6,6 +6,7 @@ services:
         container_name: vhdm_laravel_php_fpm
         restart: unless-stopped
         tty: true
+        command: "composer install"
         volumes:
             - "./laravel:/var/www/laravel"
         links:
