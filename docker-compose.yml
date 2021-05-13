@@ -4,7 +4,7 @@ services:
     laravel_php_fpm:
         build: ./php-fpm
         container_name: vhdm_laravel_php_fpm
-        restart: unless-stopped
+        restart: always
         tty: true
         volumes:
             - "./laravel:/var/www/laravel"
