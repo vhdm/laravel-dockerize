@@ -169,7 +169,7 @@ if ping -q -c 1 -W 1 google.com >/dev/null; then
   sudo yum update -y > /dev/null
   warning "Installing docker, wget, git, zip..."
   sudo yum install wget git zip unzip -y > /dev/null
-  if [ -x "$(command -v docker)" ]; then
+  if ! [ -x "$(command -v docker)" ]; then
     sudo curl -sSL http://get.docker.com | sh > /dev/null
     sudo curl -sL "https://github.com/docker/compose/releases/download/1.27.4/docker-compose-$(uname -s)-$(uname -m)" -o /usr/local/bin/docker-compose > /dev/null
     sudo chmod +x /usr/local/bin/docker-compose
