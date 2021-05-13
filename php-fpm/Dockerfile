@@ -65,12 +65,7 @@ RUN "date"
 # Clean
 RUN apt-get clean
 RUN rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/* /var/cache/*
-
 COPY ./conf/xdebug.ini /usr/local/etc/php/conf.d/xdebug.ini
 COPY ./conf/php.ini /usr/local/etc/php/conf.d/php.ini
-
 RUN mkdir -p ${WORKDIR}
-
 WORKDIR ${WORKDIR}
-
-CMD [ "php" ,"/usr/local/bin/composer","install"]
