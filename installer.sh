@@ -204,21 +204,21 @@ if ping -q -c 1 -W 1 google.com >/dev/null; then
   sleep 2
   sudo chmod +x sil.sh
   sudo docker-compose --env-file "$LARAVEL_DIRECTORY"/.env up --build -d 
-  warning "Wait..."
-  sleep 2
-  sudo chmod -R 777 "$LARAVEL_DIRECTORY"/storage
-  sudo printf "%s\n" "alias artisan='sudo docker exec vhdm_laravel_php_fpm php artisan'" >> ~/.bashrc
-  sudo printf "%s\n" "alias composer='sudo docker exec vhdm_laravel_php_fpm composer'" >> ~/.bashrc
-  sudo printf "%s\n" "alias down='sudo docker-compose down'" >> ~/.bashrc
-  source ~/.bashrc
-  success ">> Finish"
-  warning '
 
-      -|--------------------------------|-
-       | composer  install              |
-       | artisan   key:generate         |
-       | artisan   dump-autoload        |
-      -|--------------------------------|-
+
+  sudo chmod -R 777 "$LARAVEL_DIRECTORY"/storage
+  sudo printf "%s\n" "alias v-artisan='sudo docker exec vhdm_laravel_php_fpm php artisan'" >> ~/.bashrc
+  sudo printf "%s\n" "alias v-composer-install='sudo docker exec vhdm_laravel_php_fpm composer'" >> ~/.bashrc
+  
+  source ~/.bashrc
+  success '
+
+       |---|# Run This Commands ########|
+       |---|----------------------------|
+       | 1 | v-composer  install        |
+       | 2 | v-artisan   key:generate   |
+       | 3 | v-artisan   dump-autoload  |
+       |---|----------------------------|
 
   '
 else
