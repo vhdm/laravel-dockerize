@@ -1,5 +1,5 @@
 # laravel-dockerize
-Create Docerized Laravel app in 3 steps
+Simple steps to Dockerize your Laravel app
 
 Step 1:
 `git clone https://github.com/vhdm/laravel-dockerize.git && cd laravel-dockerize`
