@@ -58,6 +58,7 @@ services:
     composer:
         image: composer:latest
         command: ["composer", "install"]
+        restart: always
         depends_on:
             - "nginx"
         volumes:
