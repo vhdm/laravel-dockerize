@@ -59,7 +59,7 @@ services:
         image: composer:latest
         command: ["composer", "install"]
         depends_on:
-            - "laravel_php_fpm"
+            - "nginx"
         volumes:
             - "./laravel:/app"
 networks: 
