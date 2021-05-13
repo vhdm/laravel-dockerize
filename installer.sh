@@ -94,7 +94,7 @@ echo '
 '
 sleep 2
 
-if (whoami != root) then
+if [ "$EUID" -ne 0 ]
   error "Please run as root"
   warning "Byebye..."
   exit
