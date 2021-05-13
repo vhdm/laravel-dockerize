@@ -94,7 +94,7 @@ echo '
 '
 sleep 2
 
-if (whoami != root)
+if (whoami != root) then
   error "Please run as root"
   warning "Byebye..."
   exit
